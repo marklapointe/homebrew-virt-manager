@@ -59,7 +59,7 @@ class VirtManager < Formula
     venv = virtualenv_create(libexec, "python3")
     venv.pip_install resources
 
-    system "#{libexec}/bin/python", "-m",
+    system "/opt/homebrew/Cellar/virt-manager/3.2.0_3/libexec/bin/python3.9" , "-m",
                      "pip",
                      "install",
                      "--upgrade",
