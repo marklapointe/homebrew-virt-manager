@@ -59,6 +59,11 @@ class VirtManager < Formula
     venv = virtualenv_create(libexec, "python3")
     venv.pip_install resources
 
+    system "#{libexec}/bin/python", "-m",
+                     "pip",
+                     "install",
+                     "--upgrade",
+                     "pip"
     # virt-manager uses distutils, doesn't like --single-version-externally-managed
     system "#{libexec}/bin/python", "setup.py",
                      "configure",
@@ -69,6 +74,7 @@ class VirtManager < Formula
                      "--no-compile-schemas",
                      "install"
 
+    
     # install virt-manager commands with PATH set to Python virtualenv environment
     bin.install Dir[libexec/"bin/virt-*"]
     bin.env_script_all_files(libexec/"bin", :PATH => "#{libexec}/bin:$PATH")
